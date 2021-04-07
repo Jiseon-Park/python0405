@@ -28,6 +28,29 @@ cur.executemany("insert into PhoneBook values (?, ?);", datalist)
 
 # 검색
 cur.execute("select * from PhoneBook;")
+# for row in cur:
+#     print(row)
 
-for row in cur:
-    print(row)
+# 1건 검색
+print( cur.fetchone() ) # 1개 출력 --> np
+
+# N건 검색
+print("---fetchMany(2)---") # 2개 출력 --> np
+print( cur.fetchmany(2) )
+
+print("---fetchAll()---") # 전체 출력인데 1개 나옴 ==> 버퍼에 남은 데이터가 1개라서
+cur.execute("select * from PhoneBook;") # 이거 추가하면 다시 버퍼 데이터 
+#리셋 돼서 정상 출력
+print( cur.fetchall() )
+
+# 결과를 슬라이싱
+cur.execute("select * from PhoneBook;")
+result = cur.fetchone()
+print(result[0])
+print(result[1])
+
+# 2차원 행열 데이터 [행][열]
+print("---다중 행의 경우---")
+result = cur.fetchall()
+print(result[0][0])
+print(result[0][1])
