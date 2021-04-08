@@ -23,7 +23,8 @@ for n in range(0,10):
         data = urllib.request.urlopen(req).read()
 
         # 공공 사이트는 사용 안함(커뮤니티는 사용)
-        page = data.decode('utf-8', 'ignore') # ==> 한글이 혹시라도 깨지더라도 무시하란 뜻
+        page = data.decode('utf-8', 'ignore') 
+        # ==> 한글이 혹시라도 깨지더라도 무시하란 뜻
         soup = BeautifulSoup(page, 'html.parser')
 
         # <span class="subject_fixed" data-role="list-title-text" title="아이폰 11 pro 골드 256G (애케플22.9.6까지) 판매합니다.">
